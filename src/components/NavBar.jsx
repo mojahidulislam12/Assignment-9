@@ -8,19 +8,19 @@ import { RxAvatar } from "react-icons/rx";
 const NavBar = () => {
   const links = (
     <>
-      <Link href={"/"} className="font-semibold text-[20px] mr-4">
+      <Link href={"/"} className="font-semibold text-[20px] mr-5">
         <li>Home</li>
       </Link>
-      <Link href={"/explore-cars"} className="font-semibold text-[20px] mr-4">
+      <Link href={"/explore-cars"} className="font-semibold text-[20px] mr-5">
         <li>Explore Cars</li>
       </Link>
-      <Link href={"/add-car"} className="font-semibold text-[20px] mr-4">
+      <Link href={"/add-car"} className="font-semibold text-[20px] mr-5">
         <li>Add Car</li>
       </Link>
-      <Link href={"/my-bookings"} className="font-semibold text-[20px] mr-4">
+      <Link href={"/my-bookings"} className="font-semibold text-[20px] mr-5">
         <li>My-Bookings</li>
       </Link>
-      <Link href={"/owner"} className="font-semibold text-[20px] mr-4">
+      <Link href={"/owner"} className="font-semibold text-[20px] mr-5">
         <li>Dashboard</li>
       </Link>
     </>
