@@ -152,6 +152,7 @@ export const cars = [
     version: "2023 EX",
     seats: 5,
     price: 30000,
+    status: "confirmed",
     isAvailable: true,
     description:
       "The Kia Sportage EX offers advanced safety features, stylish design, and reliable performance at an affordable price.",
