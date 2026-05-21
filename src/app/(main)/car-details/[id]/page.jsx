@@ -1,4 +1,3 @@
-import CarDetails from "@/components/HomePage/CarDetails";
 import CardetailsCard from "@/components/HomePage/CardetailsCard";
 import { cars } from "@/components/HomePage/FetuaredSection";
 import React from "react";

@@ -17,6 +17,8 @@ export const cars = [
     seats: 5,
     price: 25000,
     isAvailable: true,
+    description:
+      "The 2024 Toyota Corolla XSE offers a comfortable ride, modern safety features, and impressive fuel efficiency for daily driving.",
   },
   {
     id: 2,
@@ -32,6 +34,8 @@ export const cars = [
     seats: 5,
     price: 27000,
     isAvailable: false,
+    description:
+      "The Honda Civic Sport combines sporty handling, stylish design, and reliable performance with a manual transmission experience.",
   },
   {
     id: 3,
@@ -47,6 +51,8 @@ export const cars = [
     seats: 7,
     price: 65000,
     isAvailable: true,
+    description:
+      "The BMW X5 M Package delivers luxury, advanced technology, and powerful diesel performance for family adventures.",
   },
   {
     id: 4,
@@ -62,6 +68,8 @@ export const cars = [
     seats: 5,
     price: 58000,
     isAvailable: true,
+    description:
+      "The Mercedes Benz C-Class AMG provides premium comfort, elegant styling, and a high-performance driving experience.",
   },
   {
     id: 5,
@@ -77,6 +85,8 @@ export const cars = [
     seats: 5,
     price: 62000,
     isAvailable: false,
+    description:
+      "The Audi A6 Premium features hybrid efficiency, cutting-edge technology, and refined luxury for executive travel.",
   },
   {
     id: 6,
@@ -92,6 +102,8 @@ export const cars = [
     seats: 5,
     price: 47000,
     isAvailable: true,
+    description:
+      "The Tesla Model 3 Long Range offers exceptional electric range, fast acceleration, and innovative self-driving technology.",
   },
   {
     id: 7,
@@ -107,6 +119,8 @@ export const cars = [
     seats: 4,
     price: 55000,
     isAvailable: false,
+    description:
+      "The Ford Mustang GT delivers iconic muscle car performance with a powerful engine and thrilling manual driving experience.",
   },
   {
     id: 8,
@@ -122,6 +136,8 @@ export const cars = [
     seats: 5,
     price: 32000,
     isAvailable: true,
+    description:
+      "The Hyundai Tucson Hybrid combines fuel efficiency, spacious seating, and modern SUV styling for everyday comfort.",
   },
   {
     id: 9,
@@ -137,6 +153,8 @@ export const cars = [
     seats: 5,
     price: 30000,
     isAvailable: true,
+    description:
+      "The Kia Sportage EX offers advanced safety features, stylish design, and reliable performance at an affordable price.",
   },
   {
     id: 10,
@@ -152,6 +170,8 @@ export const cars = [
     seats: 5,
     price: 72000,
     isAvailable: false,
+    description:
+      "The Range Rover Evoque Dynamic combines luxury craftsmanship, off-road capability, and premium SUV comfort.",
   },
 ];
 const FetuaredSection = () => {
