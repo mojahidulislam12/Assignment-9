@@ -8,7 +8,7 @@ import { LuFuel } from "react-icons/lu";
 const CarCard = ({ car }) => {
   console.log(car);
   return (
-    <div className="w-90 group rounded-xl overflow-hidden shadow-lg hover:-translate-y-1 transition-all duration-500 cursor-pointer">
+    <div className="max-w-90 group rounded-xl overflow-hidden shadow-lg hover:-translate-y-1 transition-all duration-500 cursor-pointer">
       <div className="relative h-48 overflow-hidden">
         <Image
           src={car.img}

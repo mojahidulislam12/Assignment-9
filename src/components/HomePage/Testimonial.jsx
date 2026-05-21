@@ -52,7 +52,7 @@ const Testimonial = () => {
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="bg-white p-6 rounded-xl shadow  w-95"
+              className="bg-white p-6 rounded-xl shadow  max-w-95"
             >
               <div className="flex items-center gap-3">
                 <Image
@@ -63,7 +63,7 @@ const Testimonial = () => {
                   alt={testimonial.name}
                 />
                 <div>
-                  <p className="font-playfair text-xl">{testimonial.name}</p>
+                  <p className=" text-xl">{testimonial.name}</p>
                   <p className="text-gray-500">{testimonial.address}</p>
                 </div>
               </div>
