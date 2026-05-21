@@ -1,6 +1,6 @@
-import { Star } from "lucide-react";
 import Image from "next/image";
 import React from "react";
+import { CiStar } from "react-icons/ci";
 
 const Testimonial = () => {
   const testimonials = [
@@ -71,7 +71,7 @@ const Testimonial = () => {
                 {Array(5)
                   .fill(0)
                   .map((_, index) => (
-                    <Star key={index} filled={testimonial.rating > index} />
+                    <CiStar key={index} />
                   ))}
               </div>
               <p className="text-gray-500 max-w-90 mt-4">

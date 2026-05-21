@@ -1,4 +1,5 @@
 import Banner from "@/components/Banner";
+import Footer from "@/components/Footer";
 import ActionSection from "@/components/HomePage/ActionSection";
 import CarCard from "@/components/HomePage/CarCard";
 import FetuaredSection from "@/components/HomePage/FetuaredSection";
@@ -13,6 +14,7 @@ export default function Home() {
       <ActionSection></ActionSection>
       <Testimonial></Testimonial>
       <NewsLetter></NewsLetter>
+      <Footer></Footer>
     </div>
   );
 }
