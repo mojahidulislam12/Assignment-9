@@ -14,7 +14,6 @@ export default function Home() {
       <ActionSection></ActionSection>
       <Testimonial></Testimonial>
       <NewsLetter></NewsLetter>
-      <Footer></Footer>
     </div>
   );
 }

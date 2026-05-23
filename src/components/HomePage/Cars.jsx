@@ -4,9 +4,10 @@ import { FaSearch } from "react-icons/fa";
 import { cars } from "./FetuaredSection";
 import CarCard from "./CarCard";
 
-const Cars = () => {
-  const data = cars;
-  console.log(data);
+const Cars = async () => {
+  const res = await fetch("http://localhost:5000/car");
+  const cars = await res.json();
+  console.log(cars);
   return (
     <div>
       <div className="flex flex-col items-center py-20 bg-light max-md:px-4">
@@ -27,10 +28,10 @@ const Cars = () => {
       </div>
       <div className=" px-6 md:px-16 lg:px-24 xl:px-32 mt-10">
         <p className="max-w-300 mx-auto text-2xl font-bold">
-          Total Cars :{data.length}
+          Total Cars :{cars.length}
         </p>
         <div className="max-w-300 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-5">
-          {data.map((car, i) => (
+          {cars.map((car, i) => (
             <CarCard key={i} car={car}></CarCard>
           ))}
         </div>

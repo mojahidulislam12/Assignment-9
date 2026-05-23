@@ -58,7 +58,7 @@ const CarCard = ({ car }) => {
         </div>
       </div>
       <div className="text-center pb-4">
-        <Link href={`car-details/${car.id}`}>
+        <Link href={`car-details/${car._id}`}>
           <button className="btn">
             View Details <FaArrowRight />
           </button>

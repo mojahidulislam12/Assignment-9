@@ -71,7 +71,7 @@ const MyBooking = () => {
               <div className="md:col-span-1 flex flex-col justify-between gap-2">
                 <div className="text-sm text-gray-500 text-right">
                   <p>Total Price</p>
-                  <h1></h1>
+                  <h1 className="text-2xl font-semibold text-primary"></h1>
                 </div>
               </div>
             </div>

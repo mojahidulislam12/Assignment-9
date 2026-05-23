@@ -4,9 +4,10 @@ import React from "react";
 
 const CarDEtails = async ({ params }) => {
   const { id } = await params;
-  const data = cars;
-
-  const car = data.find((item) => item.id === parseInt(id));
+  console.log(id);
+  const res = await fetch(`http://localhost:5000/car/${id}`);
+  const car = await res.json();
+  console.log(car);
 
   return (
     <div>
