@@ -1,11 +1,18 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import log from "../assets/logo.svg";
 import Avatar from "../assets/user.png";
 import Link from "next/link";
-import { Button } from "@heroui/react";
-import { RxAvatar } from "react-icons/rx";
+import { authClient } from "@/lib/auth-client";
 const NavBar = () => {
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
+  console.log(user);
+
+  const handleSignOut = async () => {
+    await authClient.signOut();
+  };
   const links = (
     <>
       <Link href={"/"} className="font-semibold text-[20px] mr-5">
@@ -68,18 +75,38 @@ const NavBar = () => {
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">{links}</ul>
           </div>
-          <div className="navbar-end">
-            <Image
-              src={Avatar}
-              width={41}
-              height={41}
-              alt="logo"
-              className="mr-5"
-            ></Image>
-            <Link href={"/login"} className="">
-              <button className="btn font-semibold text-[20px]">Login</button>
-            </Link>
-          </div>
+          {user ? (
+            <div className="navbar-end">
+              <Image
+                src={user.image || Avatar}
+                width={41}
+                height={41}
+                alt="logo"
+                className="mr-5"
+              ></Image>
+              <Link href={"/login"} className="">
+                <button
+                  onClick={handleSignOut}
+                  className="btn font-semibold text-[20px]"
+                >
+                  LogOut
+                </button>
+              </Link>
+            </div>
+          ) : (
+            <div className="navbar-end">
+              <Image
+                src={Avatar}
+                width={41}
+                height={41}
+                alt="logo"
+                className="mr-5"
+              ></Image>
+              <Link href={"/login"} className="">
+                <button className="btn font-semibold text-[20px]">Login</button>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -7,7 +7,7 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import { LuFuel } from "react-icons/lu";
 
 const CardetailsCard = ({ car }) => {
-  console.log(car);
+  //console.log(car);
 
   return (
     <div className="">

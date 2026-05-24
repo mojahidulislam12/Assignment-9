@@ -6,7 +6,7 @@ import Link from "next/link";
 const FetuaredSection = async () => {
   const res = await fetch("http://localhost:5000/car");
   const cars = await res.json();
-  console.log(cars);
+  //console.log(cars);
   return (
     <div className="max-w-300 mx-auto ">
       <div className="flex flex-col items-center">
