@@ -13,6 +13,7 @@ import {
 } from "@heroui/react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const LoginPage = () => {
   const onSubmit = async (e) => {
@@ -30,31 +31,65 @@ const LoginPage = () => {
       redirect("/");
     }
   };
+  const handleGoogleSignin = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+  };
+  const handleGitHubSignin = async () => {
+    const data = await authClient.signIn.social({
+      provider: "github",
+    });
+  };
 
   return (
     <div className="max-w-7xl mx-auto">
       <Card className="border">
         <Form onSubmit={onSubmit} className="flex w-130 mx-auto flex-col gap-4">
           <TextField isRequired name="email" type="email">
-            <Label>Email</Label>
+            <Label className="text-xl">Email</Label>
             <Input placeholder="Your email ..." />
             <FieldError />
           </TextField>
           <TextField isRequired minLength={8} name="password" type="password">
-            <Label>Password</Label>
+            <Label className="text-xl">Password</Label>
             <Input placeholder="Enter your password" />
             <Description>
               Must be at least 8 characters with 1 uppercase and 1 number
             </Description>
             <FieldError />
           </TextField>
-          <div className="flex gap-2">
-            <Button type="submit">Submit</Button>
+          <div className="flex gap-2 -mb-3">
+            <button className="btn w-full bg-primary  text-white">
+              Register
+            </button>
           </div>
-          <p>
-            Do not have an account ? <Link href={"/register"}>Register</Link>
-          </p>
         </Form>
+        <div className="divider w-130 mx-auto">OR</div>
+        <div className="flex gap-2 justify-center items-center -mt-3 w-130 mx-auto">
+          <button
+            onClick={handleGoogleSignin}
+            className="btn flex-1  hover:bg-primary hover:text-white  text-black  "
+          >
+            <FaGoogle />
+            Signin with Google
+          </button>
+          <div className="divider divider-horizontal">OR</div>
+          <button
+            onClick={handleGitHubSignin}
+            className="btn flex-1 hover:bg-primary hover:text-white  text-black  "
+          >
+            <FaGithub /> Signin with GitHub
+          </button>
+        </div>
+        <div className="text-center -mt-2 w-130 mx-auto">
+          <p className="font-semibold">
+            Do Not Have An Account?
+            <Link href={"/register"}>
+              <span className="text-red-500 font-bold">Register</span>
+            </Link>
+          </p>
+        </div>
       </Card>
     </div>
   );

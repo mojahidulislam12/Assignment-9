@@ -1,3 +1,6 @@
+"use client";
+import { authClient } from "@/lib/auth-client";
+import { Label, ListBox, Select } from "@heroui/react";
 import Image from "next/image";
 import React from "react";
 import { CiLocationOn } from "react-icons/ci";
@@ -5,9 +8,13 @@ import { FaCarSide, FaRegUser } from "react-icons/fa";
 
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { LuFuel } from "react-icons/lu";
+import BookingCard from "./BookingCard";
 
 const CardetailsCard = ({ car }) => {
   //console.log(car);
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
+  console.log(user);
 
   return (
     <div className="">
@@ -59,28 +66,7 @@ const CardetailsCard = ({ car }) => {
               </div>
             </div>
           </div>
-          <form className="shadow-lg h-max sticky top-18 rounded-xl p-6 text-gray-500">
-            <p className="flex items-center justify-between text-2xl text-gray-800 font-semibold">
-              ${car.price}
-              <span>per day</span>
-            </p>
-            <hr className="border-borderColor my-6" />
-            <div className="flex flex-col gap-2">
-              <label htmlFor="">PickUp Date</label>
-              <input
-                type="date"
-                className="border border-borderColor px-3 py-2 rounded-lg"
-              />
-            </div>
-            <div className="flex flex-col gap-2">
-              <label htmlFor="">Return Date</label>
-              <input
-                type="date"
-                className="border border-borderColor px-3 py-2 rounded-lg"
-              />
-            </div>
-            <button className="btn mt-8 w-full text-center">Booking Now</button>
-          </form>
+          <BookingCard car={car}></BookingCard>
         </div>
       </div>
     </div>
