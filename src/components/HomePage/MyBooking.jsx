@@ -6,6 +6,7 @@ import { headers } from "next/headers";
 import { MdEdit } from "react-icons/md";
 import { AiOutlineDelete } from "react-icons/ai";
 import BookingCancle from "./BookingCancle";
+import BookingEdit from "./BookingEdit";
 
 const MyBooking = async () => {
   const session = await auth.api.getSession({
@@ -83,10 +84,7 @@ const MyBooking = async () => {
                   </h1>
                 </div>
                 <div className="flex gap-2">
-                  <button className="btn btn-success text-white ">
-                    <MdEdit className="" />
-                    Edit
-                  </button>
+                  <BookingEdit booking={booking}></BookingEdit>
                   <BookingCancle bookingId={booking._id}></BookingCancle>
                 </div>
               </div>

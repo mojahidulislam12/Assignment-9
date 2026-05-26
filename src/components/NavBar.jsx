@@ -235,7 +235,7 @@ const NavBar = () => {
                 </li>
 
                 <li className="text-xl">
-                  <Link href={"/my-added-cars"}>My Added Cars</Link>
+                  <Link href={"/my-added-car"}>My Added Cars</Link>
                 </li>
 
                 <li className="mt-2 text-xl">
