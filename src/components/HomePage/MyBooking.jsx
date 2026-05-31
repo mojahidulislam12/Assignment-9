@@ -14,22 +14,31 @@ const MyBooking = async () => {
   });
   const user = session?.user;
   console.log(user);
+
+  const { token } = await auth.api.getToken({
+    headers: await headers(),
+  });
+  console.log(token);
   const { id } = user;
   console.log(session);
-  const res = await fetch(`http://localhost:5000/booking/${id}`);
+  const res = await fetch(`http://localhost:5000/booking/${id}`, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
   const data = await res.json();
   console.log(data._id);
 
   return (
     <div className="mxa-w-300 mx-auto">
-      <div className="px-0 md:px-16 lg:px-24 xl:px-32 2xl:px-48 mt-16 text-sm max-w-7xl">
+      <div className="px-0 md:px-16 lg:px-24 xl:px-32 2xl:px-48  text-sm max-w-7xl mt-100 md:mt-0">
         <h1 className="font-bold text-2xl">My Booking</h1>
         <p>View and manage your all car booking</p>
         <div>
           {data.map((booking, i) => (
             <div
               key={i}
-              className="grid grid-cols-1 md:grid-cols-4 gap-6 p-6 border border-borderColor rounded-lg mt-5 first:mt-12"
+              className="grid grid-cols-1 md:grid-cols-4 gap-6 p-4 border border-borderColor rounded-lg mt-5 first:mt-12"
             >
               <div className="md:col-span-1">
                 <div className="rounded-md overflow-hidden mb-3">

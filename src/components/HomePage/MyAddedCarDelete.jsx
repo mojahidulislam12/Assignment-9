@@ -1,18 +1,11 @@
 "use client";
-import { authClient } from "@/lib/auth-client";
 import { AlertDialog, Button } from "@heroui/react";
-import React from "react";
-import { AiOutlineDelete } from "react-icons/ai";
-
-const BookingCancle = ({ bookingId }) => {
+const MyAddedCarDelete = ({ car }) => {
   const handleCancel = async () => {
-    const { data: tokenData } = await authClient.token();
-    console.log(tokenData);
-    const res = await fetch(`http://localhost:5000/booking/${bookingId}`, {
+    const res = await fetch(`http://localhost:5000/car/${car.userId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${tokenData?.token}`,
       },
     });
     const data = res.json();
@@ -21,8 +14,10 @@ const BookingCancle = ({ bookingId }) => {
   return (
     <div>
       <AlertDialog>
-        <Button className="btn bg-danger text-white">
-          <AiOutlineDelete />
+        <Button
+          variant="danger"
+          className="w-20 btn ml-2 hover:bg-danger hover:text-white"
+        >
           Delete
         </Button>
         <AlertDialog.Backdrop>
@@ -32,13 +27,22 @@ const BookingCancle = ({ bookingId }) => {
               <AlertDialog.Header>
                 <AlertDialog.Icon status="danger" />
                 <AlertDialog.Heading>
-                  Cancel Booking permanently?
+                  Delete project permanently?
                 </AlertDialog.Heading>
               </AlertDialog.Header>
-              <AlertDialog.Body></AlertDialog.Body>
+              <AlertDialog.Body>
+                <p>
+                  This will permanently delete{" "}
+                  <strong>My Awesome Project</strong> and all of its data. This
+                  action cannot be undone.
+                </p>
+              </AlertDialog.Body>
               <AlertDialog.Footer>
+                <Button slot="close" variant="tertiary">
+                  Cancel
+                </Button>
                 <Button onClick={handleCancel} slot="close" variant="danger">
-                  Cancel Booking
+                  Delete Project
                 </Button>
               </AlertDialog.Footer>
             </AlertDialog.Dialog>
@@ -49,4 +53,4 @@ const BookingCancle = ({ bookingId }) => {
   );
 };
 
-export default BookingCancle;
+export default MyAddedCarDelete;

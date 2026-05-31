@@ -47,40 +47,43 @@ const SignUpPage = () => {
 
   return (
     <div className="max-w-7xl mx-auto">
-      <Card className="border">
-        <Form onSubmit={onSubmit} className="flex w-130 mx-auto flex-col gap-4">
-          <TextField isRequired name="name" type="text">
-            <Label className="text-xl">Name</Label>
-            <Input placeholder="Your name ..." />
-            <FieldError />
-          </TextField>
+      <Card className="border max-w-130 mx-auto mt-10 md:mt-10">
+        <div className="">
+          <Form onSubmit={onSubmit} className="flex  flex-col gap-4">
+            <TextField isRequired name="name" type="text">
+              <Label className="text-xl">Name</Label>
+              <Input placeholder="Your name ..." />
+              <FieldError />
+            </TextField>
 
-          <TextField isRequired name="image" type="url">
-            <Label className="text-xl">Image</Label>
-            <Input placeholder="Your image ..." />
-            <FieldError />
-          </TextField>
-          <TextField isRequired name="email" type="email">
-            <Label className="text-xl">Email</Label>
-            <Input placeholder="Your email ..." />
-            <FieldError />
-          </TextField>
-          <TextField isRequired minLength={8} name="password" type="password">
-            <Label className="text-xl">Password</Label>
-            <Input placeholder="Enter your password" />
-            <Description>
-              Must be at least 8 characters with 1 uppercase and 1 number
-            </Description>
-            <FieldError />
-          </TextField>
-          <div className="flex gap-2 -mb-3">
-            <button className="btn w-full bg-primary  text-white">
-              Register
-            </button>
-          </div>
-        </Form>
-        <div className="divider w-130 mx-auto">OR</div>
-        <div className="flex gap-2 justify-center items-center -mt-3 w-130 mx-auto">
+            <TextField isRequired name="image" type="url">
+              <Label className="text-xl">Image</Label>
+              <Input placeholder="Your image ..." />
+              <FieldError />
+            </TextField>
+            <TextField isRequired name="email" type="email">
+              <Label className="text-xl">Email</Label>
+              <Input placeholder="Your email ..." />
+              <FieldError />
+            </TextField>
+            <TextField isRequired minLength={8} name="password" type="password">
+              <Label className="text-xl">Password</Label>
+              <Input placeholder="Enter your password" />
+              <Description>
+                Must be at least 8 characters with 1 uppercase and 1 number
+              </Description>
+              <FieldError />
+            </TextField>
+            <div className="flex gap-2 -mb-3">
+              <button className="btn w-full bg-primary  text-white">
+                Register
+              </button>
+            </div>
+          </Form>
+        </div>
+
+        <div className="divider">OR</div>
+        <div className="flex gap-2 justify-center items-center -mt-3">
           <button
             onClick={handleGoogleSignin}
             className="btn flex-1  hover:bg-primary hover:text-white  text-black  "
@@ -96,7 +99,7 @@ const SignUpPage = () => {
             <FaGithub /> Signin with GitHub
           </button>
         </div>
-        <div className="text-center -mt-2 w-130 mx-auto">
+        <div className="text-center -mt-2  mx-auto">
           <p className="font-semibold">
             Have An Account?
             <Link href={"/login"}>

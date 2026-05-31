@@ -7,6 +7,8 @@ import React from "react";
 import { CiLocationOn } from "react-icons/ci";
 import { FaCarSide, FaRegUser } from "react-icons/fa";
 import { LuFuel } from "react-icons/lu";
+import MyAddedCarEdit from "./MyAddedCarEdit";
+import MyAddedCarDelete from "./MyAddedCarDelete";
 
 const MyAddedCar = async () => {
   const session = await auth.api.getSession({
@@ -14,8 +16,9 @@ const MyAddedCar = async () => {
   });
   const user = session?.user;
   console.log(user);
-  const res = await fetch(`http://localhost:5000/car/${user.id}`);
-  const data = await res.json();
+  const res = await fetch("http://localhost:5000/car");
+  const cars = await res.json();
+  const data = cars.filter((car) => car.userId === user.id);
   console.log(data);
   return (
     <div className="mxa-w-300 mx-auto">
@@ -77,19 +80,9 @@ const MyAddedCar = async () => {
                 </div>
               </div>
             </div>
-            <div className="text-center pb-4">
-              <Button
-                variant="success"
-                className="w-20 btn hover:bg-success hover:text-white"
-              >
-                Edit
-              </Button>
-              <Button
-                variant="danger"
-                className="w-20 btn ml-2 hover:bg-danger hover:text-white"
-              >
-                Delete
-              </Button>
+            <div className="text-center pb-4 flex justify-center">
+              <MyAddedCarEdit car={car}></MyAddedCarEdit>
+              <MyAddedCarDelete car={car}></MyAddedCarDelete>
             </div>
           </div>
         ))}

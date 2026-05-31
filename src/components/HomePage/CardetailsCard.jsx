@@ -26,7 +26,7 @@ const CardetailsCard = ({ car }) => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
           <div className="lg:col-span-2">
             <Image
-              src={car.img}
+              src={car?.img}
               width={100}
               height={100}
               alt=""
@@ -35,34 +35,34 @@ const CardetailsCard = ({ car }) => {
             <div className="space-x-6">
               <div>
                 <h1 className="text-3xl font-bold">
-                  {car.brand} {car.version}
+                  {car?.brand} {car?.version}
                 </h1>
                 <p className="text-gray-500 text-lg ">
-                  {car.category}. {car.year}
+                  {car?.category}. {car?.year}
                 </p>
               </div>
               <hr className="border-borderColor my-6" />
               <div className=" grid grid-cols-2 sm:grid-cols-4 text-gray-600 gap-y-2">
                 <div className="btn flex items-center text-sm text-muted">
                   <FaRegUser className="h-4 mr-2" />
-                  <span>{car.seats}</span>
+                  <span>{car?.seats}</span>
                 </div>
                 <div className="btn flex items-center text-sm text-muted">
                   <LuFuel className="h-4 mr-2" />
-                  <span>{car.fuelType}</span>
+                  <span>{car?.fuelType}</span>
                 </div>
                 <div className=" btn flex items-center text-sm text-muted">
                   <FaCarSide className="h-4 mr-2" />
-                  <span>{car.transmission}</span>
+                  <span>{car?.transmission}</span>
                 </div>
                 <div className="btn flex items-center text-sm text-muted">
                   <CiLocationOn className="h-4 mr-2" />
-                  <span>{car.location}</span>
+                  <span>{car?.location}</span>
                 </div>
               </div>
               <div className="mt-5">
                 <h1 className="text-xl font-medium mb-3">Description</h1>
-                <p className="text-gray-500">{car.description}</p>
+                <p className="text-gray-500">{car?.description}</p>
               </div>
             </div>
           </div>

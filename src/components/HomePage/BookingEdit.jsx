@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { Button, Label, Modal, Surface, Select, ListBox } from "@heroui/react";
 import toast from "react-hot-toast";
 import { MdEdit } from "react-icons/md";
@@ -18,12 +19,15 @@ const BookingEdit = ({ booking }) => {
     };
 
     console.log(bookingData);
+    const { data: tokenData } = await authClient.token();
+    console.log(tokenData);
 
     try {
       const res = await fetch(`http://localhost:5000/booking/${booking._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
+          authorization: `Bearer ${tokenData.token}`,
         },
         body: JSON.stringify(bookingData),
       });

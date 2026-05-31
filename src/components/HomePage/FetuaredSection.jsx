@@ -2,21 +2,32 @@ import React from "react";
 import CarCard from "./CarCard";
 import { FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 const FetuaredSection = async () => {
-  const res = await fetch("http://localhost:5000/car");
+  const { token } = await auth.api.getToken({
+    headers: await headers(),
+  });
+  console.log(token);
+  const res = await fetch("http://localhost:5000/car", {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
   const cars = await res.json();
   //console.log(cars);
   return (
     <div className="max-w-300 mx-auto ">
-      <div className="flex flex-col items-center">
-        <div className="flex flex-col justify-center items-center text-center">
-          <h1 className="font-semibold text-4xl md:text-10">
-            Featured Vehicles
+      <div className="flex flex-col items-center -mt-20 md:mt-0">
+        <div className="flex flex-col justify-center items-center text-center relative">
+          <h1 className="font-semibold text-4xl md:text-5xl text-gray-900">
+            Drive Your Dream Car Today
           </h1>
-          <p className="text-sm md:text-base text-gray-500/90 mt-2 max-w-156">
-            Explore our selection of premium Vehicles available for your next
-            adventure..
+
+          <p className="text-sm md:text-base text-gray-500 mt-3 max-w-2xl">
+            Choose from premium, luxury, and budget-friendly cars. Book
+            instantly and start your journey without hassle.
           </p>
         </div>
         <div className="max-w-300 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-18">
