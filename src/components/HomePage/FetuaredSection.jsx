@@ -10,7 +10,7 @@ const FetuaredSection = async () => {
   const cars = await res.json();
   //console.log(cars);
   return (
-    <div className="max-w-300 mx-auto py-20">
+    <div className="max-w-300 mx-auto py-10">
       <div className="flex flex-col items-center">
         <div className="flex flex-col justify-center items-center text-center relative">
           <h1 className="font-semibold text-4xl md:text-5xl text-gray-900">
