@@ -4,15 +4,17 @@ import Image from "next/image";
 import React, { useState } from "react";
 import BannerImg from "@/assets/main_car.png";
 
+import Link from "next/link";
+
 const Banner = () => {
-  const cityList = [
-    { city: "Dhaka" },
-    { city: "Chittagong" },
-    { city: "Khulna" },
-    { city: "Rajshahi" },
-    { city: "Sylhet" },
-    { city: "Barisal" },
-  ];
+  // const cityList = [
+  //   { city: "Dhaka" },
+  //   { city: "Chittagong" },
+  //   { city: "Khulna" },
+  //   { city: "Rajshahi" },
+  //   { city: "Sylhet" },
+  //   { city: "Barisal" },
+  // ];
 
   const [location, setLocation] = useState("");
 
@@ -32,9 +34,12 @@ const Banner = () => {
               prices, and smooth driving experience.
             </p>
             <div className="flex flex-wrap gap-5">
-              <button className="px-8 py-4 border-2 border-primary text-primary rounded-full font-semibold hover:bg-primary hover:text-white transition-all duration-300 cursor-pointer">
-                Explore Cars
-              </button>
+              <Link href="/explore-cars">
+                {" "}
+                <button className="px-8 py-4 border-2 border-primary text-primary rounded-full font-semibold hover:bg-primary hover:text-white transition-all duration-300 cursor-pointer">
+                  Explore Cars
+                </button>
+              </Link>
             </div>
           </div>
 

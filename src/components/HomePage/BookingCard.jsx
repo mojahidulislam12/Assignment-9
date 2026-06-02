@@ -34,7 +34,7 @@ const BookingCard = ({ car }) => {
     const { data: tokenData } = await authClient.token();
     console.log(tokenData);
 
-    const res = await fetch("http://localhost:5000/booking", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking`, {
       method: "POST",
       headers: {
         "content-Type": "application/json",
@@ -53,7 +53,7 @@ const BookingCard = ({ car }) => {
         className="shadow-lg h-max sticky top-18 rounded-xl p-6 text-gray-500"
       >
         <p className="flex items-center justify-between text-2xl text-gray-800 font-semibold">
-          ${car.price}
+          ${car?.price}
           <span>per day</span>
         </p>
         <hr className="border-borderColor my-6" />

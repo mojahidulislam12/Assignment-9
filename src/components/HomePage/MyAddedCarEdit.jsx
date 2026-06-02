@@ -1,287 +1,3 @@
-// "use client";
-
-// import {
-//   Button,
-//   Select,
-//   Input,
-//   Label,
-//   Modal,
-//   Surface,
-//   TextField,
-//   FieldError,
-//   ListBox,
-//   TextArea,
-// } from "@heroui/react";
-
-// const MyAddedCarEdit = ({ car }) => {
-//   const onsubmit = async (e) => {
-//     e.preventDefault();
-
-//     const formData = new FormData(e.currentTarget);
-//     const carsData = Object.fromEntries(formData.entries());
-
-//     const carData = {
-//       userId: user?.id,
-//       ...carsData,
-//       price: Number(carsData.price),
-//       seats: Number(carsData.seats),
-//       year: Number(carsData.year),
-//       isAvailable: carsData.isAvailable === "true",
-//       userEmail: user?.email,
-//       userName: user?.name,
-//       userImage: user?.image,
-//     };
-
-//     console.log(carData);
-
-//     const res = await fetch(`http://localhost:5000/car/${car.userId}`, {
-//       method: "PATCH",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(carData),
-//     });
-
-//     const data = await res.json();
-//     window.location.reload();
-
-//     console.log(data);
-//   };
-
-//   return (
-//     <div>
-//       <Modal>
-//         <Button
-//           variant="success"
-//           className="w-20 btn hover:bg-success hover:text-white"
-//         >
-//           Edit
-//         </Button>
-//         <Modal.Backdrop>
-//           <Modal.Container placement="auto">
-//             <Modal.Dialog className="sm:max-w-md">
-//               <Modal.CloseTrigger />
-//               <Modal.Header>
-//                 <Modal.Icon className="bg-accent-soft text-accent-soft-foreground"></Modal.Icon>
-//                 <Modal.Heading>Contact Us</Modal.Heading>
-//               </Modal.Header>
-//               <Modal.Body className="p-6">
-//                 <Surface variant="default">
-//                   <form onSubmit={onsubmit} className="space-y-8 mt-8">
-//                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-//                       <TextField defaultValue={car.name} name="name" isRequired>
-//                         <Label>Car Name</Label>
-//                         <Input placeholder="Car name..." />
-//                         <FieldError />
-//                       </TextField>
-
-//                       <TextField
-//                         defaultValue={car.price}
-//                         name="price"
-//                         isRequired
-//                       >
-//                         <Label>Daily Rent Price</Label>
-//                         <Input type="number" placeholder="Price.." />
-//                         <FieldError />
-//                       </TextField>
-
-//                       <TextField
-//                         defaultValue={car.seats}
-//                         name="seats"
-//                         isRequired
-//                       >
-//                         <Label>Seat Capacity</Label>
-//                         <Input type="number" placeholder="Seat..." />
-//                         <FieldError />
-//                       </TextField>
-
-//                       {/* Category */}
-//                       <div>
-//                         <Label>Car Type</Label>
-
-//                         <Select
-//                           defaultValue={car.category}
-//                           name="category"
-//                           isRequired
-//                           className="w-full"
-//                           placeholder="Car Type"
-//                         >
-//                           <Select.Trigger>
-//                             <Select.Value />
-//                             <Select.Indicator />
-//                           </Select.Trigger>
-
-//                           <Select.Popover>
-//                             <ListBox>
-//                               <ListBox.Item id="SUV">SUV</ListBox.Item>
-//                               <ListBox.Item id="Sedan">Sedan</ListBox.Item>
-//                               <ListBox.Item id="Hatchback">
-//                                 Hatchback
-//                               </ListBox.Item>
-//                               <ListBox.Item id="Luxury">Luxury</ListBox.Item>
-//                             </ListBox>
-//                           </Select.Popover>
-//                         </Select>
-//                       </div>
-
-//                       {/* Image */}
-//                       <div className="md:col-span-2">
-//                         <TextField defaultValue={car.img} name="img" isRequired>
-//                           <Label>Image URL</Label>
-//                           <Input
-//                             type="url"
-//                             placeholder="https://example.com/car.jpg"
-//                           />
-//                           <FieldError />
-//                         </TextField>
-//                       </div>
-
-//                       <TextField
-//                         defaultValue={car.location}
-//                         name="location"
-//                         isRequired
-//                       >
-//                         <Label>PickUp Location</Label>
-//                         <Input placeholder="Location..." />
-//                         <FieldError />
-//                       </TextField>
-
-//                       <TextField
-//                         defaultValue={car.brand}
-//                         name="brand"
-//                         isRequired
-//                       >
-//                         <Label>Brand</Label>
-//                         <Input placeholder="Brand..." />
-//                         <FieldError />
-//                       </TextField>
-
-//                       <TextField defaultValue={car.year} name="year" isRequired>
-//                         <Label>Year</Label>
-//                         <Input type="number" placeholder="Year..." />
-//                         <FieldError />
-//                       </TextField>
-
-//                       <TextField
-//                         defaultValue={car.version}
-//                         name="version"
-//                         isRequired
-//                       >
-//                         <Label>Version</Label>
-//                         <Input type="text" placeholder="2024 XSE" />
-//                         <FieldError />
-//                       </TextField>
-
-//                       {/* Transmission */}
-//                       <div>
-//                         <Label>Transmission</Label>
-
-//                         <Select
-//                           defaultValue={car.transmission}
-//                           name="transmission"
-//                           isRequired
-//                           className="w-full"
-//                           placeholder="Transmission"
-//                         >
-//                           <Select.Trigger>
-//                             <Select.Value />
-//                             <Select.Indicator />
-//                           </Select.Trigger>
-
-//                           <Select.Popover>
-//                             <ListBox>
-//                               <ListBox.Item id="Automatic">
-//                                 Automatic
-//                               </ListBox.Item>
-//                               <ListBox.Item id="Manual">Manual</ListBox.Item>
-//                             </ListBox>
-//                           </Select.Popover>
-//                         </Select>
-//                       </div>
-
-//                       {/* Fuel */}
-//                       <div>
-//                         <Label>Fuel Type</Label>
-
-//                         <Select
-//                           defaultValue={car.fuelType}
-//                           name="fuelType"
-//                           isRequired
-//                           className="w-full"
-//                           placeholder="Fuel Type"
-//                         >
-//                           <Select.Trigger>
-//                             <Select.Value />
-//                             <Select.Indicator />
-//                           </Select.Trigger>
-
-//                           <Select.Popover>
-//                             <ListBox>
-//                               <ListBox.Item id="Petrol">Petrol</ListBox.Item>
-//                               <ListBox.Item id="Hybrid">Hybrid</ListBox.Item>
-//                               <ListBox.Item id="Diesel">Diesel</ListBox.Item>
-//                             </ListBox>
-//                           </Select.Popover>
-//                         </Select>
-//                       </div>
-
-//                       {/* Status */}
-//                       <div>
-//                         <Label>Status</Label>
-
-//                         <Select
-//                           defaultValue={car.isAvailable}
-//                           name="isAvailable"
-//                           isRequired
-//                           className="w-full"
-//                           placeholder="Status"
-//                         >
-//                           <Select.Trigger>
-//                             <Select.Value />
-//                             <Select.Indicator />
-//                           </Select.Trigger>
-
-//                           <Select.Popover>
-//                             <ListBox>
-//                               <ListBox.Item id="true">true</ListBox.Item>
-//                               <ListBox.Item id="false">false</ListBox.Item>
-//                             </ListBox>
-//                           </Select.Popover>
-//                         </Select>
-//                       </div>
-
-//                       {/* Description */}
-//                       <div className="md:col-span-2">
-//                         <TextField
-//                           defaultValue={car.description}
-//                           name="description"
-//                           isRequired
-//                         >
-//                           <Label>Description</Label>
-
-//                           <TextArea placeholder="Describe the car..." />
-
-//                           <FieldError />
-//                         </TextField>
-//                       </div>
-//                     </div>
-
-//                     <Modal.Footer>
-//                       <Button slot="close">Submit</Button>
-//                     </Modal.Footer>
-//                   </form>
-//                 </Surface>
-//               </Modal.Body>
-//             </Modal.Dialog>
-//           </Modal.Container>
-//         </Modal.Backdrop>
-//       </Modal>
-//     </div>
-//   );
-// };
-
-// export default MyAddedCarEdit;
-
 "use client";
 
 import {
@@ -298,6 +14,8 @@ import {
 } from "@heroui/react";
 
 import { authClient } from "@/lib/auth-client";
+import { MdEdit } from "react-icons/md";
+import toast from "react-hot-toast";
 
 const MyAddedCarEdit = ({ car }) => {
   const { data: session } = authClient.useSession();
@@ -324,22 +42,28 @@ const MyAddedCarEdit = ({ car }) => {
     };
 
     console.log(carData);
+    const { data: tokenData } = await authClient.token();
+    console.log(tokenData);
 
     try {
-      const res = await fetch(`http://localhost:5000/car/${car.userId}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/car/${car.userId}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${tokenData?.token}`,
+          },
+          body: JSON.stringify(carData),
         },
-        body: JSON.stringify(carData),
-      });
+      );
 
       const data = await res.json();
 
       console.log(data);
 
       if (data.modifiedCount > 0) {
-        alert("Car Updated Successfully");
+        toast.success("Added Car Updated Successfully");
         window.location.reload();
       }
     } catch (error) {
@@ -353,9 +77,9 @@ const MyAddedCarEdit = ({ car }) => {
         <Modal.Trigger>
           <Button
             variant="success"
-            className="w-20 hover:bg-success hover:text-white"
+            className="w-20 btn ml-2 hover:bg-success hover:text-white"
           >
-            Edit
+            <MdEdit /> Edit
           </Button>
         </Modal.Trigger>
 
@@ -370,20 +94,11 @@ const MyAddedCarEdit = ({ car }) => {
 
               <Modal.Body className="p-6">
                 <Surface variant="default">
-                  <form onSubmit={onsubmit} className="space-y-8 mt-8">
+                  <form onSubmit={onsubmit} className="space-y-6 mt-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                      {/* Car Name */}
-                      <TextField defaultValue={car.name} name="name" isRequired>
-                        <Label>Car Name</Label>
-
-                        <Input placeholder="Car name..." />
-
-                        <FieldError />
-                      </TextField>
-
                       {/* Price */}
                       <TextField
-                        defaultValue={car.price}
+                        defaultValue={car?.price}
                         name="price"
                         isRequired
                       >
@@ -396,7 +111,7 @@ const MyAddedCarEdit = ({ car }) => {
 
                       {/* Seats */}
                       <TextField
-                        defaultValue={car.seats}
+                        defaultValue={car?.seats}
                         name="seats"
                         isRequired
                       >
@@ -413,7 +128,7 @@ const MyAddedCarEdit = ({ car }) => {
 
                         <Select
                           name="category"
-                          defaultValue={car.category}
+                          defaultValue={car?.category}
                           placeholder="Car Type"
                           className="w-full"
                           aria-label="Car Type"
@@ -439,10 +154,26 @@ const MyAddedCarEdit = ({ car }) => {
                           </Select.Popover>
                         </Select>
                       </div>
+                      {/* Location */}
+                      <TextField
+                        defaultValue={car?.location}
+                        name="location"
+                        isRequired
+                      >
+                        <Label>PickUp Location</Label>
+
+                        <Input placeholder="Location..." />
+
+                        <FieldError />
+                      </TextField>
 
                       {/* Image */}
                       <div className="md:col-span-2">
-                        <TextField defaultValue={car.img} name="img" isRequired>
+                        <TextField
+                          defaultValue={car?.img}
+                          name="img"
+                          isRequired
+                        >
                           <Label>Image URL</Label>
 
                           <Input
@@ -454,22 +185,9 @@ const MyAddedCarEdit = ({ car }) => {
                         </TextField>
                       </div>
 
-                      {/* Location */}
-                      <TextField
-                        defaultValue={car.location}
-                        name="location"
-                        isRequired
-                      >
-                        <Label>PickUp Location</Label>
-
-                        <Input placeholder="Location..." />
-
-                        <FieldError />
-                      </TextField>
-
                       {/* Brand */}
-                      <TextField
-                        defaultValue={car.brand}
+                      {/* <TextField
+                        defaultValue={car?.brand}
                         name="brand"
                         isRequired
                       >
@@ -478,20 +196,24 @@ const MyAddedCarEdit = ({ car }) => {
                         <Input placeholder="Brand..." />
 
                         <FieldError />
-                      </TextField>
+                      </TextField> */}
 
                       {/* Year */}
-                      <TextField defaultValue={car.year} name="year" isRequired>
+                      {/* <TextField
+                        defaultValue={car?.year}
+                        name="year"
+                        isRequired
+                      >
                         <Label>Year</Label>
 
                         <Input type="number" placeholder="Year..." />
 
                         <FieldError />
-                      </TextField>
+                      </TextField> */}
 
                       {/* Version */}
-                      <TextField
-                        defaultValue={car.version}
+                      {/* <TextField
+                        defaultValue={car?.version}
                         name="version"
                         isRequired
                       >
@@ -500,15 +222,15 @@ const MyAddedCarEdit = ({ car }) => {
                         <Input type="text" placeholder="2024 XSE" />
 
                         <FieldError />
-                      </TextField>
+                      </TextField> */}
 
                       {/* Transmission */}
-                      <div>
+                      {/* <div>
                         <Label>Transmission</Label>
 
                         <Select
                           name="transmission"
-                          defaultValue={car.transmission}
+                          defaultValue={car?.transmission}
                           placeholder="Transmission"
                           className="w-full"
                           aria-label="Transmission"
@@ -529,15 +251,15 @@ const MyAddedCarEdit = ({ car }) => {
                             </ListBox>
                           </Select.Popover>
                         </Select>
-                      </div>
+                      </div> */}
 
                       {/* Fuel Type */}
-                      <div>
+                      {/* <div>
                         <Label>Fuel Type</Label>
 
                         <Select
                           name="fuelType"
-                          defaultValue={car.fuelType}
+                          defaultValue={car?.fuelType}
                           placeholder="Fuel Type"
                           className="w-full"
                           aria-label="Fuel Type"
@@ -558,15 +280,15 @@ const MyAddedCarEdit = ({ car }) => {
                             </ListBox>
                           </Select.Popover>
                         </Select>
-                      </div>
+                      </div> */}
 
                       {/* Status */}
-                      <div>
+                      {/* <div>
                         <Label>Status</Label>
 
                         <Select
                           name="isAvailable"
-                          defaultValue={car.isAvailable}
+                          defaultValue={car?.isAvailable}
                           placeholder="Status"
                           className="w-full"
                           aria-label="Status"
@@ -587,12 +309,12 @@ const MyAddedCarEdit = ({ car }) => {
                             </ListBox>
                           </Select.Popover>
                         </Select>
-                      </div>
+                      </div> */}
 
                       {/* Description */}
                       <div className="md:col-span-2">
                         <TextField
-                          defaultValue={car.description}
+                          defaultValue={car?.description}
                           name="description"
                           isRequired
                         >
@@ -606,7 +328,12 @@ const MyAddedCarEdit = ({ car }) => {
                     </div>
 
                     <Modal.Footer>
-                      <Button type="submit">Update Car</Button>
+                      <Button
+                        className="w-full btn ml-2 hover:bg-success hover:text-white"
+                        type="submit"
+                      >
+                        Update Car
+                      </Button>
                     </Modal.Footer>
                   </form>
                 </Surface>

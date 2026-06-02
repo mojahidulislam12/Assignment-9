@@ -10,7 +10,9 @@ export default function Home() {
   return (
     <div>
       <Banner></Banner>
+
       <FetuaredSection></FetuaredSection>
+
       <ActionSection></ActionSection>
       <Testimonial></Testimonial>
       <NewsLetter></NewsLetter>

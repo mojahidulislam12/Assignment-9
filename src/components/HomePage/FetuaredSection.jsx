@@ -6,15 +6,7 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 
 const FetuaredSection = async () => {
-  const { token } = await auth.api.getToken({
-    headers: await headers(),
-  });
-  console.log(token);
-  const res = await fetch("http://localhost:5000/car", {
-    headers: {
-      authorization: `Bearer ${token}`,
-    },
-  });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/car`);
   const cars = await res.json();
   //console.log(cars);
   return (
@@ -35,10 +27,11 @@ const FetuaredSection = async () => {
             <CarCard key={i} car={car}></CarCard>
           ))}
         </div>
-
-        <button className="btn px-6 py-2 hover:bg-primary hover:text-white rounded-md mt-18 cursor-pointer">
-          Explore All Cars <FaArrowRight />{" "}
-        </button>
+        <Link href="/explore-cars">
+          <button className="btn px-6 py-2 hover:bg-primary hover:text-white rounded-md mt-18 cursor-pointer">
+            Explore All Cars <FaArrowRight />{" "}
+          </button>
+        </Link>
       </div>
     </div>
   );

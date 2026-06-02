@@ -1,11 +1,10 @@
-import React from "react";
 import { CiFilter } from "react-icons/ci";
 import { FaSearch } from "react-icons/fa";
 import { cars } from "./FetuaredSection";
 import CarCard from "./CarCard";
 
 const Cars = async () => {
-  const res = await fetch("http://localhost:5000/car");
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/car`);
   const cars = await res.json();
   console.log(cars);
   return (

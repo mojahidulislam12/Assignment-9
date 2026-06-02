@@ -16,14 +16,26 @@ const MyAddedCar = async () => {
   });
   const user = session?.user;
   console.log(user);
-  const res = await fetch("http://localhost:5000/car");
+  const { token } = await auth.api.getToken({
+    headers: await headers(),
+  });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/car`, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
   const cars = await res.json();
   const data = cars.filter((car) => car.userId === user.id);
   console.log(data);
   return (
     <div className="mxa-w-300 mx-auto">
       <div className="px-0 md:px-16 lg:px-24 xl:px-32 2xl:px-48 mt-16 text-sm max-w-7xl">
-        <h1 className="font-bold text-2xl">My Adding car</h1>
+        <h1 className="font-bold text-2xl">
+          My Adding car:{" "}
+          <span className="ml-2 text-2xl font-semibold text-green-500">
+            {data.length}
+          </span>
+        </h1>
         <p>View and manage your all car adding</p>
       </div>
       <div className="max-w-300 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-5">
@@ -34,19 +46,19 @@ const MyAddedCar = async () => {
           >
             <div className="relative h-48 overflow-hidden">
               <Image
-                src={car.img}
+                src={car?.img}
                 width={357}
                 height={150}
                 alt=""
                 className="w-ful h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              {car.isAvailable && (
+              {car?.isAvailable && (
                 <p className="absolute top-4 left-4 bg-primary/90 text-white text-xs px-2.5 py-1 rounded-full">
                   Available Now
                 </p>
               )}
               <div className="absolute bottom-4 right-4 bg-black/80 backdrop-blur-sm text-white px-3 py-2 rounded-lg">
-                <span className="font-semibold"> ${car.price}</span>
+                <span className="font-semibold"> ${car?.price}</span>
                 <span className="text-sm text-white/80"> / day</span>
               </div>
             </div>
@@ -54,29 +66,29 @@ const MyAddedCar = async () => {
               <div className="flex justify-between items-start mb-2">
                 <div>
                   <h3 className="text-lg font-medium">
-                    {car.brand} {car.version}
+                    {car?.brand} {car?.version}
                   </h3>
                   <p className="text-segment-foreground text-sm">
-                    {car.category} . {car.year}
+                    {car?.category} . {car?.year}
                   </p>
                 </div>
               </div>
               <div className="mt-4 grid grid-cols-2 text-gray-600 gap-y-2">
                 <div className="flex items-center text-sm text-muted">
                   <FaRegUser className="h-4 mr-2" />
-                  <span>{car.seats}</span>
+                  <span>{car?.seats}</span>
                 </div>
                 <div className="flex items-center text-sm text-muted">
                   <LuFuel className="h-4 mr-2" />
-                  <span>{car.fuelType}</span>
+                  <span>{car?.fuelType}</span>
                 </div>
                 <div className="flex items-center text-sm text-muted">
                   <FaCarSide className="h-4 mr-2" />
-                  <span>{car.transmission}</span>
+                  <span>{car?.transmission}</span>
                 </div>
                 <div className="flex items-center text-sm text-muted">
                   <CiLocationOn className="h-4 mr-2" />
-                  <span>{car.location}</span>
+                  <span>{car?.location}</span>
                 </div>
               </div>
             </div>

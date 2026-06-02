@@ -1,14 +1,24 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import { AlertDialog, Button } from "@heroui/react";
+import toast from "react-hot-toast";
+import { AiOutlineDelete } from "react-icons/ai";
 const MyAddedCarDelete = ({ car }) => {
   const handleCancel = async () => {
-    const res = await fetch(`http://localhost:5000/car/${car.userId}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
+    const { data: tokenData } = await authClient.token();
+    console.log(tokenData);
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/car/${car.userId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${tokenData?.token}`,
+        },
       },
-    });
+    );
     const data = res.json();
+    toast.error("Added Car Delete Successfully");
     window.location.reload();
   };
   return (
@@ -18,7 +28,7 @@ const MyAddedCarDelete = ({ car }) => {
           variant="danger"
           className="w-20 btn ml-2 hover:bg-danger hover:text-white"
         >
-          Delete
+          <AiOutlineDelete /> Delete
         </Button>
         <AlertDialog.Backdrop>
           <AlertDialog.Container>
@@ -27,16 +37,10 @@ const MyAddedCarDelete = ({ car }) => {
               <AlertDialog.Header>
                 <AlertDialog.Icon status="danger" />
                 <AlertDialog.Heading>
-                  Delete project permanently?
+                  Delete Your Add Car permanently?
                 </AlertDialog.Heading>
               </AlertDialog.Header>
-              <AlertDialog.Body>
-                <p>
-                  This will permanently delete{" "}
-                  <strong>My Awesome Project</strong> and all of its data. This
-                  action cannot be undone.
-                </p>
-              </AlertDialog.Body>
+              <AlertDialog.Body></AlertDialog.Body>
               <AlertDialog.Footer>
                 <Button slot="close" variant="tertiary">
                   Cancel

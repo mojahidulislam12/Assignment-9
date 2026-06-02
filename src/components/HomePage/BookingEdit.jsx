@@ -23,14 +23,17 @@ const BookingEdit = ({ booking }) => {
     console.log(tokenData);
 
     try {
-      const res = await fetch(`http://localhost:5000/booking/${booking._id}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `Bearer ${tokenData.token}`,
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${booking._id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${tokenData?.token}`,
+          },
+          body: JSON.stringify(bookingData),
         },
-        body: JSON.stringify(bookingData),
-      });
+      );
 
       const data = await res.json();
       window.location.reload();
@@ -47,7 +50,7 @@ const BookingEdit = ({ booking }) => {
   return (
     <div>
       <Modal>
-        <Button className="btn btn-success text-white">
+        <Button className="w-20 btn ml-2 hover:bg-success hover:text-white">
           <MdEdit />
           Edit
         </Button>

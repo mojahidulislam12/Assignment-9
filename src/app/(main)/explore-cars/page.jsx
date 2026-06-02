@@ -1,10 +1,18 @@
 import Cars from "@/components/HomePage/Cars";
-import React from "react";
+import React, { Suspense } from "react";
 
 const exploreCars = () => {
   return (
     <div>
-      <Cars></Cars>
+      <div>
+        <Suspense
+          fallback={
+            <span className="loading loading-spinner loading-xl text-center"></span>
+          }
+        >
+          <Cars></Cars>
+        </Suspense>
+      </div>
     </div>
   );
 };

@@ -21,18 +21,26 @@ const MyBooking = async () => {
   console.log(token);
   const { id } = user;
   console.log(session);
-  const res = await fetch(`http://localhost:5000/booking/${id}`, {
-    headers: {
-      authorization: `Bearer ${token}`,
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${id}`,
+    {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
     },
-  });
+  );
   const data = await res.json();
   console.log(data._id);
 
   return (
-    <div className="mxa-w-300 mx-auto">
-      <div className="px-0 md:px-16 lg:px-24 xl:px-32 2xl:px-48  text-sm max-w-7xl mt-100 md:mt-0">
-        <h1 className="font-bold text-2xl">My Booking</h1>
+    <div className="mxa-w-300 mx-auto mt-10">
+      <div className="px-0 md:px-16 lg:px-24 xl:px-32 2xl:px-48  text-sm max-w-7xl">
+        <h1 className="font-bold text-2xl">
+          My Booking cars:{" "}
+          <span className="ml-2 text-2xl font-semibold text-green-500">
+            {data.length}
+          </span>
+        </h1>
         <p>View and manage your all car booking</p>
         <div>
           {data.map((booking, i) => (
@@ -51,10 +59,11 @@ const MyBooking = async () => {
                   />
                 </div>
                 <p className="text-lg font-medium mt-2">
-                  {booking.carBrand} {booking.carVersion}
+                  {booking?.carBrand} {booking?.carVersion}
                 </p>
                 <p className="text-gray-500">
-                  {booking.carYer} . {booking.carCategory} . {booking.location}
+                  {booking?.carYer} . {booking?.carCategory} .{" "}
+                  {booking?.location}
                 </p>
               </div>
               <div className="md:col-span-2">
@@ -63,9 +72,9 @@ const MyBooking = async () => {
                     Booking # {i + 1}
                   </p>
                   <p
-                    className={`px-3 py-1 text-xs rounded-full ${booking.status === "confirmed" ? "bg-green-400/15 text-green-600" : "bg-red-400/15 text-red-600"}`}
+                    className={`px-3 py-1 text-xs rounded-full ${booking?.status === "confirmed" ? "bg-green-400/15 text-green-600" : "bg-red-400/15 text-red-600"}`}
                   >
-                    {booking.carIsAvailable}
+                    {booking?.carIsAvailable}
                   </p>
                 </div>
                 <div className="flex items-start gap-2 mt-3">
@@ -73,7 +82,7 @@ const MyBooking = async () => {
                   <div>
                     <p className="text-gray-500">Rental Period</p>
                     <p>
-                      {booking.pickupDate} to {booking.returnDate}
+                      {booking?.pickupDate} to {booking?.returnDate}
                     </p>
                   </div>
                 </div>
@@ -81,7 +90,7 @@ const MyBooking = async () => {
                   <IoLocation className="w-4 h-4 mt-1" />
                   <div>
                     <p className="text-gray-500">PickUp location</p>
-                    <p>{booking.location}</p>
+                    <p>{booking?.location}</p>
                   </div>
                 </div>
               </div>
@@ -89,7 +98,7 @@ const MyBooking = async () => {
                 <div className="text-sm text-gray-500 text-right">
                   <p>Per Day Price</p>
                   <h1 className="text-2xl font-semibold text-primary">
-                    $ {booking.carPrice}
+                    $ {booking?.carPrice}
                   </h1>
                 </div>
                 <div className="flex gap-2">

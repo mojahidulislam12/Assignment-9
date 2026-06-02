@@ -9,6 +9,7 @@ import { FaCarSide, FaRegUser } from "react-icons/fa";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { LuFuel } from "react-icons/lu";
 import BookingCard from "./BookingCard";
+import Link from "next/link";
 
 const CardetailsCard = ({ car }) => {
   //console.log(car);
@@ -19,10 +20,13 @@ const CardetailsCard = ({ car }) => {
   return (
     <div className="">
       <div className="max-w-300 mx-auto   mt-16">
-        <button className="btn flex items-center gap-2 mb-6 text-gray-500 cursor-pointer">
-          Back to all cars{" "}
-          <IoMdArrowRoundBack className="rotate-180 opacity-65" />
-        </button>
+        <Link href="/explore-cars">
+          <button className="btn flex items-center gap-2 mb-6 text-gray-500 cursor-pointer">
+            Back to all cars{" "}
+            <IoMdArrowRoundBack className="rotate-180 opacity-65" />
+          </button>
+        </Link>
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
           <div className="lg:col-span-2">
             <Image

@@ -12,8 +12,9 @@ import {
   Button,
   Card,
 } from "@heroui/react";
+import { redirect } from "next/navigation";
 import React from "react";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 const AddCar = () => {
   const { data: session } = authClient.useSession();
@@ -40,37 +41,29 @@ const AddCar = () => {
 
     console.log(carData);
 
-    try {
-      const res = await fetch("http://localhost:5000/car", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(carData),
-      });
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/car`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(carData),
+    });
 
-      const data = await res.json();
+    const data = await res.json();
 
-      console.log(data);
-
-      if (res.ok) {
-        toast.success("Successfully Added");
-        e.target.reset();
-      } else {
-        toast.error("Failed to add car");
-      }
-    } catch (error) {
-      console.log(error);
-      toast.error("Something went wrong");
+    console.log(data);
+    if (data) {
+      toast.success("Successfully Added");
+      redirect("/my-added-car");
+      window.location.reload();
     }
   };
-
   return (
     <div>
-      <div className="max-w-300 mx-auto py-8 mt-100 md:mt-0">
+      <div className="max-w-300 mx-auto py-8 ">
         <h1 className="text-xl font-bold">Add Car</h1>
 
-        <Card className="p-6 max-w-230">
+        <Card className="p-6 max-w-280 mx-auto mt-10">
           <form onSubmit={onsubmit} className="space-y-8 mt-8 ">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <TextField name="name" isRequired>

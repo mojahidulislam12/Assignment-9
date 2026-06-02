@@ -2,28 +2,33 @@
 import { authClient } from "@/lib/auth-client";
 import { AlertDialog, Button } from "@heroui/react";
 import React from "react";
+import toast from "react-hot-toast";
 import { AiOutlineDelete } from "react-icons/ai";
 
 const BookingCancle = ({ bookingId }) => {
   const handleCancel = async () => {
     const { data: tokenData } = await authClient.token();
     console.log(tokenData);
-    const res = await fetch(`http://localhost:5000/booking/${bookingId}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${tokenData?.token}`,
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${bookingId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${tokenData?.token}`,
+        },
       },
-    });
+    );
     const data = res.json();
+    toast.error("Booking Cancel Successfully");
     window.location.reload();
   };
   return (
     <div>
       <AlertDialog>
-        <Button className="btn bg-danger text-white">
+        <Button className="w-20 btn ml-2 hover:bg-danger hover:text-white">
           <AiOutlineDelete />
-          Delete
+          Cancel
         </Button>
         <AlertDialog.Backdrop>
           <AlertDialog.Container>
