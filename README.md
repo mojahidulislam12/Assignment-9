@@ -25,11 +25,11 @@ Modern UI with dynamic filtering and search capabilities.
 -Technologies Used
 
 
-Next.js
-React.js
-MongoDB
-Express.js
-Tailwind CSS
+Next.js,
+React.js,
+MongoDB,
+Express.js,
+Tailwind CSS,
 JWT Authentication
 
 
