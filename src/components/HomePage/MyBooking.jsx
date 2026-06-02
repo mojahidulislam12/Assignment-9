@@ -3,8 +3,7 @@ import { SlCalender } from "react-icons/sl";
 import { IoLocation } from "react-icons/io5";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
-import { MdEdit } from "react-icons/md";
-import { AiOutlineDelete } from "react-icons/ai";
+
 import BookingCancle from "./BookingCancle";
 import BookingEdit from "./BookingEdit";
 
