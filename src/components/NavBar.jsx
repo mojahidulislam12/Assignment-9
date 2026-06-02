@@ -107,7 +107,7 @@ const NavBar = () => {
 
               {/* Dropdown */}
               {open && (
-                <div className="absolute right-0 mt-4 w-75 bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden ml-50 sm:ml-0 z-[999]">
+                <div className="absolute right-0 mt-4 w-71 sm:w-75 bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden ml-100 sm:ml-0 z-[999]">
                   {/* User Info */}
                   <div className="mb-4 border-b border-gray-200 pb-4 text-center bg-gray-50 rounded-xl  mt-10">
                     <Image

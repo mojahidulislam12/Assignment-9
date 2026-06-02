@@ -76,7 +76,7 @@ const BookingEdit = ({ booking }) => {
 
                       <Select
                         name="driverNeeded"
-                        defaultSelectedKeys={[booking?.driverNeeded]}
+                        defaultValue={booking?.driverNeeded}
                         className="w-full"
                         isRequired
                       >

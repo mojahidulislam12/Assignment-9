@@ -10,8 +10,8 @@ const FetuaredSection = async () => {
   const cars = await res.json();
   //console.log(cars);
   return (
-    <div className="max-w-300 mx-auto ">
-      <div className="flex flex-col items-center -mt-20 md:mt-0">
+    <div className="max-w-300 mx-auto py-20">
+      <div className="flex flex-col items-center">
         <div className="flex flex-col justify-center items-center text-center relative">
           <h1 className="font-semibold text-4xl md:text-5xl text-gray-900">
             Drive Your Dream Car Today
@@ -22,7 +22,7 @@ const FetuaredSection = async () => {
             instantly and start your journey without hassle.
           </p>
         </div>
-        <div className="max-w-300 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-18">
+        <div className="max-w-300 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-18 px-6 md:px-16 lg:px-24 xl:px-32">
           {cars.slice(0, 6).map((car, i) => (
             <CarCard key={i} car={car}></CarCard>
           ))}

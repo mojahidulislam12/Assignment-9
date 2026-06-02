@@ -30,15 +30,15 @@ const MyAddedCar = async () => {
   return (
     <div className="mxa-w-300 mx-auto">
       <div className="px-0 md:px-16 lg:px-24 xl:px-32 2xl:px-48 mt-16 text-sm max-w-7xl">
-        <h1 className="font-bold text-2xl">
+        <h1 className="font-bold text-2xl ml-4 md:ml-0">
           My Adding car:{" "}
           <span className="ml-2 text-2xl font-semibold text-green-500">
             {data.length}
           </span>
         </h1>
-        <p>View and manage your all car adding</p>
+        <p className="ml-4 md:ml-0">View and manage your all car adding</p>
       </div>
-      <div className="max-w-300 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-5">
+      <div className="max-w-300 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-10  px-6 md:px-0">
         {data.map((car, i) => (
           <div
             key={i}

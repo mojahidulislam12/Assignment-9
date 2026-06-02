@@ -19,7 +19,7 @@ const Banner = () => {
   const [location, setLocation] = useState("");
 
   return (
-    <section className="min-h-screen bg-light flex items-center justify-center px-6n py-16 -mt-35 md:mt-0">
+    <section className="min-h-screen bg-light flex items-center justify-center px-6 py-16 ">
       <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
         {/* Left Side Content */}
         <div className="space-y-8">

@@ -33,15 +33,15 @@ const MyBooking = async () => {
 
   return (
     <div className="mxa-w-300 mx-auto mt-10">
-      <div className="px-0 md:px-16 lg:px-24 xl:px-32 2xl:px-48  text-sm max-w-7xl">
-        <h1 className="font-bold text-2xl">
+      <div className="lg:px-24 xl:px-32 2xl:px-48  text-sm max-w-7xl">
+        <h1 className="font-bold text-2xl ml-4 md:ml-0">
           My Booking cars:{" "}
           <span className="ml-2 text-2xl font-semibold text-green-500">
             {data.length}
           </span>
         </h1>
-        <p>View and manage your all car booking</p>
-        <div>
+        <p className="ml-4 md:ml-0">View and manage your all car booking</p>
+        <div className="px-6 md:px-0 mt-10">
           {data.map((booking, i) => (
             <div
               key={i}
@@ -100,7 +100,7 @@ const MyBooking = async () => {
                     $ {booking?.carPrice}
                   </h1>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-2 mr-10">
                   <BookingEdit booking={booking}></BookingEdit>
                   <BookingCancle bookingId={booking._id}></BookingCancle>
                 </div>

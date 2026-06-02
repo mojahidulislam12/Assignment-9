@@ -64,7 +64,7 @@ const AddCar = () => {
         <h1 className="text-xl font-bold">Add Car</h1>
 
         <Card className="p-6 max-w-280 mx-auto mt-10">
-          <form onSubmit={onsubmit} className="space-y-8 mt-8 ">
+          <form onSubmit={onsubmit} className="space-y-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <TextField name="name" isRequired>
                 <Label>Car Name</Label>
@@ -228,10 +228,10 @@ const AddCar = () => {
               </div>
             </div>
             <div>
-              <Button slot="close" variant="secondary">
-                Cancel
-              </Button>
-              <Button type="submit" className="w-full bg-cyan-500 text-white">
+              <Button
+                type="submit"
+                className="btn w-full text-black hover:bg-cyan-500 hover:text-white"
+              >
                 Add Car
               </Button>
             </div>
