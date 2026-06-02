@@ -1,4 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+-Car Rental 
+
+A modern car rental marketplace web application where users can browse, search, add, and book cars easily. Built with modern web technologies for a fast and smooth user experience.
+
+
+
+-Live Site
+
+https://assignment-9-nu-gilt.vercel.app/
+
+
+
+-Features
+Users can browse all available rental cars with detailed information.
+Advanced search functionality by brand, model, and price range.
+Secure authentication and authorization system for users.
+Users can add, update, and manage their own listed cars.
+Responsive design optimized for mobile, tablet, and desktop devices.
+Real-time booking availability and smooth user experience.
+Modern UI with dynamic filtering and search capabilities.
+
+
+-Technologies Used
+Next.js
+React.js
+MongoDB
+Express.js
+Tailwind CSS
+JWT Authentication
+
 
 ## Getting Started
 
