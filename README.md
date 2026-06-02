@@ -11,6 +11,8 @@ https://assignment-9-nu-gilt.vercel.app/
 
 
 -Features
+
+
 Users can browse all available rental cars with detailed information.
 Advanced search functionality by brand, model, and price range.
 Secure authentication and authorization system for users.
@@ -21,6 +23,8 @@ Modern UI with dynamic filtering and search capabilities.
 
 
 -Technologies Used
+
+
 Next.js
 React.js
 MongoDB
